@@ -1,76 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    />
+    <link href="./style.css" rel="stylesheet" />
     <title>Hangman game</title>
-</head>
-<body>
-    <div class="jumbotron">
-        <h2 class="text-center">Hangman game</h2>
-    </div>
+  </head>
+  <body>
+    <h2 class="text-center">Hangman game</h2>
     <div class="container">
-
-        <!--div com a classe da imagem a denifir-->
-        <div class="sprite"></div>
-
-        <ul class="lacunas text-center"></ul>
-        <div class="text-center">
-            <imput id="entrada"
-            class="start"
-            placeholder="Secret Word" autofocus></imput>
-        </div>
-        <div id="dvmenu" class="dvdisplay">
-            <button onclick="start()">New Word</button>
+      <!--div com a classe da imagem a denifir-->
     </div>
-    <div id="dvword"class="dvdisplay">
-        <input type="text" id="letter0" class="letter" maxlength="1">
-        <input type="text" id="letter1" class="letter" maxlength="1">
-        <input type="text" id="letter2" class="letter" maxlength="1">
-        <input type="text" id="letter3" class="letter" maxlength="1">
-        <input type="text" id="letter4" class="letter" maxlength="1">
-        <input type="text" id="letter5" class="letter" maxlength="1">
-        <input type="text" id="letter6" class="letter" maxlength="1">
-        <input type="text" id="letter7" class="letter" maxlength="1">
-        <input type="text" id="letter8" class="letter" maxlength="1">
-        <input type="text" id="letter9" class="letter" maxlength="1">
-        <input type="text" id="letter10"class="letter" maxlength="1">
-        <input type="text" id="letter11"class="letter" maxlength="1">
-        <input type="text" id="letter12"class="letter" maxlength="1">
-        <input type="text" id="letter13"class="letter" maxlength="1">
-        <input type="text" id="letter14"class="letter" maxlength="1">
-        <input type="text" id="letter15"class="letter" maxlength="1">
-        <input type="text" id="letter16"class="letter" maxlength="1">
-        <input type="text" id="letter17"class="letter" maxlength="1">
-        <input type="text" id="letter18"class="letter" maxlength="1">
-        <input type="text" id="letter19"class="letter" maxlength="1">
-        </div>
-        <div id="dvplayer" class="dvdisplay">
-            <div id="playercontrol">
-                <input type="text" id="letterP" class="letterP" maxlength="1">
-                <button onclick="play()">Play</button>
-                <button onclick="tip()">Tip</button>
-                <div id="dvmsg"></div><br>
-                <div id="typedletters">Typed Letters:</div>
-                </div>
-                <div id="dvstrength">
-                    <!--Preciso encontrar as imagens para relacionar aqui-->
-                    <img id="cabeca" src="cabeca1.png">
-                    <img id="corpo" src="corpo.png">
-                    <img id="bracoE" src="bracoE">
-                    <img id="bracoD" src="bracoD">
-                    <img id="pernaE" src="pernaE">
-                    <img id="pernaD" src="pernaD">
-                </div>
-                </div>
+    <div id="dvmenu" class="dvdisplay">
+      <button id="start">New Word</button>
+    </div>
+    <div id="dvword" class="dvdisplay"></div>
+    <div id="dvplayer" class="dvdisplay">
+      <div id="playercontrol">
+        <input type="text" id="letterP" class="letterP" maxlength="1" />
+        <button id="guess">Guess</button>
+        <div id="typedletters">Typed Letters:</div>
+      </div>
+    </div>
 
-    <script 
-    type="text/javascript" 
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
-    
-    
-</body>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    ></script>
+  </body>
 </html>

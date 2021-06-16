@@ -4,6 +4,7 @@
   text-transform: uppercase;
   text-align: center;
   margin: 5px;
+  border-bottom: 5px solid black;
   display: none;
 }
 .letterP {
@@ -14,7 +15,7 @@
   margin: 5px;
 }
 dvdisplay {
-  display: block;
+  display: inline-block;
 }
 #dvstrength {
   position: absolute;
