@@ -7,6 +7,10 @@
     <link
       rel="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
     />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    ></script>
     <link href="./style.css" rel="stylesheet" />
     <title>Hangman game</title>
   </head>
@@ -21,15 +25,12 @@
     <div id="dvword" class="dvdisplay"></div>
     <div id="dvplayer" class="dvdisplay">
       <div id="playercontrol">
-        <input type="text" id="letterP" class="letterP" maxlength="1" />
+        <input type="text" id="currentLetter" class="currentLetter" maxlength="1" />
         <button id="guess">Guess</button>
         <div id="typedletters">Typed Letters:</div>
       </div>
     </div>
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-    ></script>
+    <script src="./index.js"></script>
   </body>
 </html>

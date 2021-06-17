@@ -26,85 +26,65 @@ const library = [
   "morcego",
   "raposa",
 ];
-let quantity = library.length - 1;
-/*let position = Math.round(Math.random() * quantity);
-let word = library[position];
-let sizeWord = word.length;*/
-let boxLetters = [];
-let rights;
-let wrongsMax = 7;
-let wrongs = 0;
-let drawings = [];
-let right = false;
-let playing = false;
-
-function defineLetters(word) {
-  const letters = word.split("");
-  const boxWord = document.getElementById("dvmenu");
-  for (let i = 0; i < letters.length; i++) {
-    boxWord.innerHTML += `<span class="letter" id="letter-${i}"></span>`;
+class Game {
+  constructor(word) {
+    this.word = word;
+    this.rights = 0;
+    this.wrongs = 0;
   }
-  console.log(word);
-}
-
-function playing() {
-  player = document.getElementById("letterP");
-  player.focus();
-  if (player.value == "") {
-    alert("Type a letter");
-  } else {
-    if (playing) {
-      let player;
-      let object;
-      let letterTmp;
-      //ver tradução em inglês
-      let letter;
-      let quest;
-      letter = player.value;
-      player.value = "";
-      right = false;
-      quest = word.match(letter);
-      while (quest != null) {
-        letterTmp = word.search(letter);
-        object = document.getElementById("letter" + letterTmp).value = letter;
-        word = word.replace(letter, "0");
-        rights++;
-        quest = word.match(letter);
-        right = true;
+  start(boxWord) {
+    const letters = this.word.split("");
+    boxWord.innerHTML = "";
+    for (let i = 0; i < letters.length; i++) {
+      boxWord.innerHTML += `<div class="letterBox" id="letter-${i}"></div>`;
+    }
+    console.log(this.word);
+  }
+  check(letter, places) {
+    let indexes = [];
+    let notMatched = 0;
+    for (let i = 0; i < this.word.length; i++) {
+      if (this.word[i] == letter) {
+        indexes.push(i);
+        this.rights += 1;
+      } else {
+        indexes.push(-1);
+        notMatched += 1;
       }
-      if (!right) {
-        document.getElementById("dvtypedletters").innerHTML +=
-          letter.toUpperCase() + " ";
-        wrongs++;
-        if (wrongs < 7) {
-          drawings[wrongs].style.display = "block";
-        } else {
-          alert("YOU LOST!");
-          playing = false;
-        }
-      }
-      if (rights == sizeWord) {
-        alert("YOU WINED!");
-        playing = false;
+    }
+    if (this.word.length == notMatched) {
+      this.wrongs += 1;
+    }
+    for (let i = 0; i < places.length; i++) {
+      if (indexes[i] == i) {
+        places[i].innerText = letter;
       }
     }
   }
+  checkGameOver() {
+    if (this.wrongs == 7) {
+      alert("Game Over!");
+    } else if (this.rights == this.word.length) {
+      alert("You Won!!!");
+    }
+  }
 }
+document.getElementById("start").addEventListener("click", function () {
+  let quantity = library.length - 1;
+  let position = Math.round(Math.random() * quantity);
+  let word = library[position];
+  let game = new Game(word);
+  let boxWord = document.getElementById("dvword");
+  game.start(boxWord);
+  console.log(boxWord);
+  document.getElementById("guess").addEventListener("click", function () {
+    let letter = document.getElementById("currentLetter").value;
+    let places = boxWord.children;
+    document.getElementById("typedletters").innerHTML +=
+      letter.toUpperCase() + " ";
+    game.check(letter, places);
+    game.checkGameOver();
+    document.getElementById("currentLetter").value = "";
+  });
+});
 
-function start() {
-  playing = true;
-  player = document.getElementById("letterP");
-  player.value = "";
-  player.focus();
-  rights = 0;
-  wrongs = 0;
-  right = false;
-  document.getElementById("dvtypedletters").innerHTML = "Typed Letters:";
-  position = Math.round(Math.random() * quantity);
-  word = library[position];
-  sizeWord = word.length;
-  defineLetters(word);
-  console.log(word);
-}
-
-document.getElementById("start").addEventListener("click", start);
